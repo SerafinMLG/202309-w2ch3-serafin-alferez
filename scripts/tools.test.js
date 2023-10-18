@@ -1,6 +1,8 @@
 import { arrayLength } from "./tools.js";
 import { arrayPush } from "./tools.js";
 import { arrayPop } from "./tools.js";
+import { arrayUnshift } from "./tools.js";
+import { arrayShift } from "./tools.js";
 
 describe('Given arrayLength', () => {
 
@@ -106,3 +108,47 @@ describe('When the argument is ', () => {
   })
 
 });
+
+describe('When the argument is ', () => {
+  test('With an arrey and unshift "" result should be ', () => {
+    // const item = "";
+    let testD = [1,2,3];
+    const expected = 7;
+    const result = arrayUnshift(testD,2,3,null,undefined)
+    expect(result).toBe(expected)
+  })
+
+  test('With an arrey and unshift null result should be ', () => {
+    const item = null;
+    let testD = [1,2,3];
+    const expected = 4;
+    const result = arrayUnshift(testD,item)
+    expect(result).toBe(expected)
+  })
+
+  test('With an arrey and unshift undefined result should be ', () => {
+    const item = undefined;
+    let testD = [1,2,3];
+    const expected = 4;
+    const result = arrayUnshift(testD,item)
+    expect(result).toBe(expected)
+  })
+
+})
+
+describe('When the argument is ', () => {
+  test('With an arrey and shift result should be ', () => {
+    let testD = [1,2,3];
+    const expected = 1;
+    const result = arrayShift(testD)
+    expect(result).toBe(expected)
+  })
+
+  test('With an empty arrey and shift result should be ', () => {
+    let testD = [];
+    const expected = undefined;
+    const result = arrayShift(testD)
+    expect(result).toBe(expected)
+  })
+
+})
