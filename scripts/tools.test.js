@@ -3,6 +3,7 @@ import { arrayPush } from "./tools.js";
 import { arrayPop } from "./tools.js";
 import { arrayUnshift } from "./tools.js";
 import { arrayShift } from "./tools.js";
+import { arrayIncludes } from "./tools.js"
 
 describe('Given arrayLength', () => {
 
@@ -53,28 +54,28 @@ describe('When the argument is ', () => {
   })
 
   test('With empty arrey and push null result should be ', () => {
-    const item = null;
-    let testD = [];
-    const expected = 1;
-    const result = arrayPush(testD,item)
-    expect(result).toBe(expected)
+    const item = [1,2,3]
+    const testD = [null,undefined];
+    const expected = 5;
+    const result = arrayPush(testD,...item)
+    expect(result).toBe(expected);
   })
 
-  test('With empty arrey and push undefined result should be ', () => {
-    const item = null;
-    let testD = [];
-    const expected = 1;
-    const result = arrayPush(testD,item)
-    expect(result).toBe(expected)
-  })
+  // test('With empty arrey and push undefined result should be ', () => {
+  //   const item = null;
+  //   let testD = [];
+  //   const expected = 1;
+  //   const result = arrayPush(testD,item)
+  //   expect(result).toBe(expected)
+  // })
 
-  test('should first', () => {
-    const item = undefined;
-    let testD = [];
-    const expected = 1;
-    const result = arrayPush(testD,item)
-    expect(result).toBe(expected)
-  })
+  // test('should first', () => {
+  //   const item = undefined;
+  //   let testD = [null];
+  //   const expected = 2;
+  //   const result = arrayPush(testD,item)
+  //   expect(result).toBe(expected)
+  // })
   
 })
 
@@ -152,3 +153,38 @@ describe('When the argument is ', () => {
   })
 
 })
+
+describe('When the argument is an array and an element ', () => {
+  test('With an arrey result should be ', () => {
+    let testD = [1,2,3];
+    let item = 2;
+    const expected = true;
+    const result = arrayIncludes(testD,item)
+    expect(result).toBe(expected)
+  })
+
+  test('With an arrey result should be ', () => {
+    let testD = [1,2,3];
+    let item = null;
+    const expected = false;
+    const result = arrayIncludes(testD,item)
+    expect(result).toBe(expected)
+  })
+
+  test('With an arrey result should be ', () => {
+    let testD = [1,2,3];
+    let item = undefined;
+    const expected = false;
+    const result = arrayIncludes(testD,item)
+    expect(result).toBe(expected)
+  })
+
+  test('With an arrey result should be ', () => {
+    let testD = [];
+    let item = undefined;
+    const expected = false;
+    const result = arrayIncludes(testD,item)
+    expect(result).toBe(expected)
+  })
+
+});

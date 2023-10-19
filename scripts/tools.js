@@ -6,9 +6,15 @@ export const arrayLength = (data) => {
   return count;
 };
 
-export const arrayPush = (array,item) => {
-  const size = arrayLength(array);
-  array[size] = item;
+export const arrayPush = (array,...item) => {
+  let newarray = [...item];
+  let myarray = [];
+  let size = arrayLength(array);
+  for (let i of newarray) {
+    array[size] = i;
+    size++;
+  }
+
   return arrayLength(array);
 };
 
@@ -25,7 +31,7 @@ export const arrayUnshift = (array,...item) => {
     newarray[k] = m;
     k++
   }
-    for (let i=0; i < size; i++){
+    for (let i of array){
       newarray[k] = array[i]
       k++
     }
@@ -37,3 +43,22 @@ export const arrayUnshift = (array,...item) => {
 export const arrayShift = (array) => {
   return array[0]
 }
+
+export const arrayIncludes = (array,item) => {
+  for (let i of array) {
+    if (i === item) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export const arrayJoin = (array,item) => {
+  let newstring = '';
+  for (i of array) {
+    newstring += item + i 
+  }
+
+}
+
+
