@@ -8,7 +8,6 @@ export const arrayLength = (data) => {
 
 export const arrayPush = (array,...item) => {
   let newarray = [...item];
-  let myarray = [];
   let size = arrayLength(array);
   for (let i of newarray) {
     array[size] = i;
@@ -23,20 +22,14 @@ export const arrayPop = (array) => {
 }
 
 export const arrayUnshift = (array,...item) => {
-  let newarray = [];
-  let k = 0;
-  const size = arrayLength(array);
-  newarray[0] = item;
-  for (let m of item) {
-    newarray[k] = m;
+  let newarray = [...item];
+  let k = arrayLength(newarray);
+  for (let i of array){
+    newarray[k] = i;
     k++
   }
-    for (let i of array){
-      newarray[k] = array[i]
-      k++
-    }
-    
-    return arrayLength(newarray);
+  
+  return arrayLength(newarray);
 }
 
 
@@ -55,10 +48,11 @@ export const arrayIncludes = (array,item) => {
 
 export const arrayJoin = (array,item) => {
   let newstring = '';
-  for (i of array) {
-    newstring += item + i 
+  for (let i=0; i < arrayLength(array); i++) {
+    newstring += array[i];
+    if (i < (arrayLength(array) - 1)){
+      newstring += item
+    }
   }
-
+  return newstring;
 }
-
-
